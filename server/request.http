@@ -1,0 +1,68 @@
+
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "hoang",
+    "email": "hoang.lv1322@gmail.com",
+    "password": "test1",
+    "confirmPassword": "test1"
+}
+
+### 
+GET http://localhost:5000/api/posts
+
+###
+GET http://localhost:5000/api/posts/61ab9427e7cacac33240d8a4
+
+### 
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "hoang.lv1322@gmail.com",
+    "password": "1234567"
+}
+
+### 
+POST http://localhost:5000/api/posts/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MTk2ZmI3ODgwNWVjMzRjYTEzZDY2ODciLCJpYXQiOjE2MzcyOTQ1NzB9.-WMF7N1QuxQZJGWm5YhRV_15Ze_N9_746oZnM8lz4R4
+
+{
+    "titlePost": "React Native",
+    "typePost": "front-end",
+    "descPost": "happy learning"
+}
+
+### 
+GET http://localhost:5000/api/posts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MTk2ZmI3ODgwNWVjMzRjYTEzZDY2ODciLCJpYXQiOjE2MzcyOTQ1NzB9.-WMF7N1QuxQZJGWm5YhRV_15Ze_N9_746oZnM8lz4R4
+
+### 
+PUT http://localhost:5000/api/posts/update/6197242f91612dcb461c17d8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MTk2ZmI3ODgwNWVjMzRjYTEzZDY2ODciLCJpYXQiOjE2MzcyOTQ1NzB9.-WMF7N1QuxQZJGWm5YhRV_15Ze_N9_746oZnM8lz4R4
+
+{
+     "titlePost": "Node js update",
+    "typePost": "back-end update",
+    "descPost": "happy learning update"
+}
+
+### 
+DELETE http://localhost:5000/api/posts/delete/6197242f91612dcb461c17d8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MTk2ZmI3ODgwNWVjMzRjYTEzZDY2ODciLCJpYXQiOjE2MzcyOTQ1NzB9.-WMF7N1QuxQZJGWm5YhRV_15Ze_N9_746oZnM8lz4R4
+
+
+### 
+POST http://localhost:5000/api/comments/61ab9427e7cacac33240d8a4/61ac8520ef57fb37f7eba723
+Content-Type: application/json
+
+{
+    "commentText":"thanh you very much"
+}
+
+### 
+GET http://localhost:5000/api/comments/61ab9427e7cacac33240d8a4
