@@ -117,6 +117,72 @@ class AuthController {
 		}
 	}
 
+	//get all account
+	getAllAccounts = async (req, res) => {
+		try {
+			const allAccounts = await Account.find()
+			if (allAccounts) {
+				res.status(200).json({
+					success: true,
+					allAccounts,
+				})
+			}
+		} catch (error) {
+			res.status(500).json({
+				success: false,
+				message: 'Internal server error',
+			})
+		}
+	}
+
+	//add friend
+	addFriend = async (req, res) => {
+		const friendId = req.params.friendId
+		try {
+			const user = await Account.findOneAndUpdate(
+				{ _id: req.userId },
+				{
+					$addToSet: {
+						friends: friendId,
+					},
+				},
+				{ new: true }
+			)
+			if (user) {
+				res.status(200).json({ success: true, user })
+			}
+		} catch (error) {
+			res.status(500).json({
+				success: false,
+				message: 'Internal server error',
+			})
+		}
+	}
+
+	//delete friend
+	deleteFriend = async (req, res) => {
+		const friendId = req.params.friendId
+		try {
+			const user = await Account.findOneAndUpdate(
+				{ _id: req.userId },
+				{
+					$pull: {
+						friends: friendId,
+					},
+				},
+				{ new: true }
+			)
+			if (user) {
+				res.status(200).json({ success: true, user })
+			}
+		} catch (error) {
+			res.status(500).json({
+				success: false,
+				message: 'Internal server error',
+			})
+		}
+	}
+
 	logout = async (req, res) => {}
 }
 

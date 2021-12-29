@@ -9,6 +9,25 @@ const verifyToken = require('../util/verifyToken')
 // @access Public
 router.get('/', verifyToken, authController.checkAuth)
 
+// @route GET api/auth/allAccounts
+// @desc get all accounts
+// @access Public
+router.get('/allAccounts', verifyToken, authController.getAllAccounts)
+
+/* 
+@Router PUTT api/auth/addfriend/:friendId
+@des add friend
+@access user
+*/
+router.put('/addfriend/:friendId', verifyToken, authController.addFriend)
+
+/* 
+@Router PUT api/auth/deletefriend 
+@des add friend
+@access user
+*/
+router.put('/deletefriend/:friendId', verifyToken, authController.deleteFriend)
+
 /* 
 @Router POST api/auth/register 
 @des register users
