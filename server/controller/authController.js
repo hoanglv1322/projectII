@@ -9,7 +9,9 @@ const CLIENT_URL = `${process.env.BASE_URL}`
 class AuthController {
 	checkAuth = async (req, res) => {
 		try {
-			const user = await Account.findById(req.userId).select('-password')
+			const user = await Account.findById(req.userId)
+				.select('-password')
+				.populate('friends')
 			if (!user) {
 				return res.status(400).json({
 					success: false,
