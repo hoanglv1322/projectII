@@ -10,4 +10,11 @@ const validatorInfor = require('../util/validatorInfor')
 */
 router.put('/update/:userId', userController.updateUser)
 
+/* 
+@Router get api/user/:userId
+@des  update infor user
+@access user
+*/
+router.get('/:userId', userController.getUser)
+
 module.exports = router

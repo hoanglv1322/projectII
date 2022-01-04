@@ -116,7 +116,7 @@ class PostController {
 				updatePostConditions,
 				update_Post,
 				{ new: true }
-			)
+			).populate('author')
 
 			if (!update_Post)
 				return res.json({
@@ -186,14 +186,14 @@ class PostController {
 				{
 					new: true,
 				}
-			)
+			).populate('author')
 			if (!updatePost)
 				return res.json({
 					success: false,
 					message: 'Post not found or user not authorised',
 				})
 			try {
-				if (updatePost.author != userId) {
+				if (updatePost.author._id != userId) {
 					const postLikeOfuser = await Account.findOneAndUpdate(
 						{ _id: userId },
 						{
@@ -237,7 +237,7 @@ class PostController {
 				{
 					new: true,
 				}
-			)
+			).populate('author')
 			if (!updatePost)
 				return res.json({
 					success: false,

@@ -23,6 +23,20 @@ class UserController {
 			res.status(500).json(err)
 		}
 	}
+
+	getUser = async (req, res) => {
+		try {
+			const user = await Account.findOne({ _id: req.params.userId })
+			if (user) {
+				res.status(200).json({
+					success: true,
+					user,
+				})
+			}
+		} catch (error) {
+			res.status(500).json(err)
+		}
+	}
 }
 
 module.exports = new UserController()
